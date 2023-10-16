@@ -7,18 +7,22 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslocoRootModule } from './transloco-root.module';
 import { LanguageSelectorComponent } from './components/language-selector/language-selector.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ImprintComponent } from './components/imprint/imprint.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    LanguageSelectorComponent
+    LanguageSelectorComponent,
+    ImprintComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    TranslocoRootModule
+    TranslocoRootModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
