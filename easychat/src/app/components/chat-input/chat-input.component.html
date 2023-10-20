@@ -1,0 +1,15 @@
+<div>
+    <form class="flex flex-row space-x-2 items-stretch" [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+        <div class="flex-1">
+          <textarea rows="1" id="input-message" formControlName="message" autocomplete="off" (keypress)="onKeyPress($event)" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-hsg-500 focus:border-hsg-500 block w-full p-2.5 resize-none" [placeholder]="'chat.input-placeholder' | transloco" appTextareaAutoresize></textarea>
+        </div>
+        <button [disabled]="!messageForm.controls.message.value" type="submit" class="text-white bg-hsg-700 hover:bg-hsg-800 focus:ring-4 focus:outline-none focus:ring-hsg-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center flex flex-row items-center space-x-2 disabled:bg-hsg-300">
+            <span>{{'chat.input-button' | transloco}}</span>
+            <span>
+                <svg class="w-[18px] h-[18px] text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20" transform="rotate(90)">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 17 8 2L9 1 1 19l8-2Zm0 0V9"/>
+                </svg>
+            </span>
+        </button>
+      </form>
+</div>

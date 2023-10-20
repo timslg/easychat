@@ -13,6 +13,11 @@ import { ImprintComponent } from './components/imprint/imprint.component';
 import { QrcodeComponent } from './components/qrcode/qrcode.component';
 import { WINDOW_PROVIDERS } from './window.providers';
 import { HostnameService } from './services/hostname.service';
+import { ChatInputComponent } from './components/chat-input/chat-input.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ChatMessageListComponent } from './components/chat-message-list/chat-message-list.component';
+import { TextareaAutoresizeDirective } from './directives/textarea-autoresize.directive';
 
 @NgModule({
   declarations: [
@@ -21,14 +26,19 @@ import { HostnameService } from './services/hostname.service';
     FooterComponent,
     LanguageSelectorComponent,
     ImprintComponent,
-    QrcodeComponent
+    QrcodeComponent,
+    ChatInputComponent,
+    ChatComponent,
+    ChatMessageListComponent,
+    TextareaAutoresizeDirective
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     TranslocoRootModule,
     AppRoutingModule,
-    QRCodeModule
+    QRCodeModule,
+    ReactiveFormsModule
   ],
   providers: [ ],
   bootstrap: [AppComponent]

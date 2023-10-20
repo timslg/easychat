@@ -9,5 +9,9 @@
     "qr-code": {
         "heading": "Scan this QR Code",
         "description": "To access this page via your smartphone, simply scan the QR code."
+    },
+    "chat": {
+        "input-placeholder": "Type a message...",
+        "input-button": "Send"
     }
 }
