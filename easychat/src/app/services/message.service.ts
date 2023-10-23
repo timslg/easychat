@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject, from, of } from 'rxjs';
+import { Observable, ReplaySubject, Subject, from, of } from 'rxjs';
 import { UserService } from './user.service';
 
 @Injectable({
@@ -7,7 +7,8 @@ import { UserService } from './user.service';
 })
 export class MessageService {
 
-  private _messages$ = new Subject<Record<'content' | 'username', string>>();
+  // Temporary solution -> Only saves the last 50 messages
+  private _messages$ = new ReplaySubject<Record<'content' | 'username', string>>(50);
 
   constructor(private userService : UserService) { }
 
