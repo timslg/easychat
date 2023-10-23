@@ -16,7 +16,7 @@
     },
     "userprofile": {
         "placeholder": "Dein Benutzername",
-        "send": "Senden",
+        "save": "Speichern",
         "username": "Benutzername",
         "userprofile": "Benutzerprofil"
     }

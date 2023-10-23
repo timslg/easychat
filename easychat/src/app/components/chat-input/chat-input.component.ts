@@ -17,7 +17,7 @@ export class ChatInputComponent {
 
   }
 
-  onSubmit() {
+  public onSubmit() {
     const message = this.messageForm.controls.message.value;
     
     if(message) {
@@ -27,10 +27,12 @@ export class ChatInputComponent {
 
   }
 
-  onKeyPress(event: KeyboardEvent) {
+  public onKeyPress(event: KeyboardEvent) {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault()
-      this.onSubmit()
+      if(this.messageForm.controls.message.value && this.userService.username) {
+        this.onSubmit()
+      }
     }
   }
 }

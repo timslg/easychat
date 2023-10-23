@@ -14,9 +14,18 @@ export class UserProfileComponent {
     
   }
 
-  public onSubmit(username: string) {
+  public onSubmit(username: string) : void {
     this.userService.setUsername(username);
     this.username = '';
+  }
+
+  public onKeyPress(event: KeyboardEvent) : void {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault()
+      if(this.username) {
+        this.onSubmit(this.username);
+      }
+    }
   }
 
 }
