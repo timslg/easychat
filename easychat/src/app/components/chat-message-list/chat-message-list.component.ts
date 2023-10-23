@@ -10,13 +10,13 @@ import { MessageService } from 'src/app/services/message.service';
 export class ChatMessageListComponent implements OnInit {
   @ViewChild('scrollContainer') private scrollContainer!: ElementRef;
 
-  public messages: Record<'content', string>[] = [];
+  public messages: Record<'content' | 'username', string>[] = [];
 
   constructor(private ref: ChangeDetectorRef, private messageService: MessageService) {
   }
 
   ngOnInit() {
-    this.messageService.messages.subscribe((message: Record<'content', string>) => {
+    this.messageService.messages.subscribe((message: Record<'content' | 'username', string>) => {
       this.messages.push(message);
       this.ref.detectChanges();
       this.scrollToBottom();

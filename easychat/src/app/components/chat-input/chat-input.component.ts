@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MessageService } from 'src/app/services/message.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-chat-input',
@@ -12,7 +13,7 @@ export class ChatInputComponent {
     message: new FormControl('')
   });
 
-  constructor(private messageService: MessageService) {
+  constructor(private messageService: MessageService, public userService: UserService) {
 
   }
 
