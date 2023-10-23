@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject, from, of } from 'rxjs';
+import { Observable, ReplaySubject, Subject, from, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessageService {
 
-  private _messages$ = new Subject<Record<'content', string>>();
+  // Temporary solution -> Only saves the last 50 messages
+  private _messages$ = new ReplaySubject<Record<'content', string>>(50);
 
   constructor() { }
 
