@@ -1,0 +1,15 @@
+#scroll-container {
+    overflow-y: auto;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, black var(--top-mask-size, 0), black calc(100% - var(--bottom-mask-size, 0)), transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0, black var(--top-mask-size, 0), black calc(100% - var(--bottom-mask-size, 0)), transparent 100%);
+    --top-mask-size: 0px;
+    --bottom-mask-size: 0px;
+}
+  
+#scroll-container.top-overflowing {
+    --top-mask-size: 4em !important;
+}
+
+#scroll-container.bottom-overflowing {
+    --bottom-mask-size: 4em !important;
+}
