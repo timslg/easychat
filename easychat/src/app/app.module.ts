@@ -15,9 +15,10 @@ import { WINDOW_PROVIDERS } from './window.providers';
 import { HostnameService } from './services/hostname.service';
 import { ChatInputComponent } from './components/chat-input/chat-input.component';
 import { ChatComponent } from './components/chat/chat.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChatMessageListComponent } from './components/chat-message-list/chat-message-list.component';
 import { TextareaAutoresizeDirective } from './directives/textarea-autoresize.directive';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { TextareaAutoresizeDirective } from './directives/textarea-autoresize.di
     ChatInputComponent,
     ChatComponent,
     ChatMessageListComponent,
-    TextareaAutoresizeDirective
+    TextareaAutoresizeDirective,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import { TextareaAutoresizeDirective } from './directives/textarea-autoresize.di
     TranslocoRootModule,
     AppRoutingModule,
     QRCodeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [ ],
   bootstrap: [AppComponent]

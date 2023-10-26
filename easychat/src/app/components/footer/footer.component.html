@@ -3,9 +3,11 @@
         <span class="text-sm text-white sm:text-center dark:text-gray-400">© 2023 Team Schildkröte. {{ 'footer.all-rights-reserved' | transloco }}</span>
         <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-white sm:mt-0">
             <li>
+            <a [routerLink]="['/']" class="mr-4 hover:underline md:mr-6 ">Chat</a>
+            <a [routerLink]="['/profile']" class="mr-4 hover:underline md:mr-6 ">{{ 'userprofile.userprofile' | transloco }}</a>
+            <a [routerLink]="['/qrcode']" class="mr-4 hover:underline md:mr-6 ">QR Code</a>
                 <a [routerLink]="['/imprint']" class="mr-4 hover:underline md:mr-6 ">{{ 'footer.imprint' | transloco }}</a>
-                <a [routerLink]="['/qrcode']" class="mr-4 hover:underline md:mr-6 ">QR Code</a>
-            </li>
+                </li>
         </ul>
     </div>
 </footer>

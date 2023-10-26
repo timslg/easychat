@@ -1,7 +1,17 @@
-<div id="scroll-container" class="flex flex-col space-y-2 overflow-y-auto h-full" (scroll)="onScroll($event)" #scrollContainer>
-    <ng-container *ngFor="let message of messages">
-        <div class="block p-2 bg-white border border-gray-200 rounded-lg shadow">
-            <span class="text-sm text-gray-900 whitespace-pre-wrap">{{ message.content }}</span>
-        </div>
+<div id="scroll-container" class="flex flex-col overflow-y-auto h-full" (scroll)="onScroll($event)" #scrollContainer>
+    <ng-container *ngFor="let message of messages; let i = index">
+        <div *ngIf="messages[i-1]?.username != message.username; then newNicknameBlock else sameNicknameBlock"></div>
+        <ng-template #newNicknameBlock>
+            <div [ngClass]="{'mt-4' : messages[i-1]}" class="block p-2 bg-white border border-gray-200 rounded-lg shadow">
+                <span class="text-hsg font-bold">{{message.username}}</span>
+                <br>
+                <span class="text-sm text-gray-900 whitespace-pre-wrap">{{ message.content }}</span>
+            </div>
+        </ng-template>
+        <ng-template #sameNicknameBlock>
+            <div [ngClass]="{'mt-1' : messages[i-1]}" class="block p-2 bg-white border border-gray-200 rounded-lg shadow">
+                <span class="text-sm text-gray-900 whitespace-pre-wrap">{{ message.content }}</span>
+            </div>
+        </ng-template>
     </ng-container>
 </div>

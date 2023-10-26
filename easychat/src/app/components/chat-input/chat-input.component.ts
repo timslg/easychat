@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MessageService } from 'src/app/services/message.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-chat-input',
@@ -12,11 +13,11 @@ export class ChatInputComponent {
     message: new FormControl('')
   });
 
-  constructor(private messageService: MessageService) {
+  constructor(private messageService: MessageService, public userService: UserService) {
 
   }
 
-  onSubmit() {
+  public onSubmit() {
     const message = this.messageForm.controls.message.value;
     
     if(message) {
@@ -26,10 +27,12 @@ export class ChatInputComponent {
 
   }
 
-  onKeyPress(event: KeyboardEvent) {
+  public onKeyPress(event: KeyboardEvent) {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault()
-      this.onSubmit()
+      if(this.messageForm.controls.message.value && this.userService.username) {
+        this.onSubmit()
+      }
     }
   }
 }

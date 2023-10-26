@@ -3,7 +3,7 @@
         <div class="flex-1">
           <textarea rows="1" id="input-message" formControlName="message" autocomplete="off" (keypress)="onKeyPress($event)" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-hsg-500 focus:border-hsg-500 block w-full p-2.5 resize-none" [placeholder]="'chat.input-placeholder' | transloco" appTextareaAutoresize></textarea>
         </div>
-        <button [disabled]="!messageForm.controls.message.value" type="submit" class="text-white bg-hsg-700 hover:bg-hsg-800 focus:ring-4 focus:outline-none focus:ring-hsg-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex flex-row items-center md:space-x-2 disabled:bg-hsg-300">
+        <button [disabled]="!messageForm.controls.message.value || !userService.username" type="submit" class="text-white bg-hsg-700 hover:bg-hsg-800 focus:ring-4 focus:outline-none focus:ring-hsg-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex flex-row items-center md:space-x-2 disabled:bg-hsg-300">
             <span class="hidden md:block">{{'chat.input-button' | transloco}}</span>
             <span>
                 <svg class="w-[18px] h-[18px] text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20" style="transform:rotate(90deg)">

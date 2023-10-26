@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject, Subject, from, of } from 'rxjs';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,15 +8,20 @@ import { Observable, ReplaySubject, Subject, from, of } from 'rxjs';
 export class MessageService {
 
   // Temporary solution -> Only saves the last 50 messages
-  private _messages$ = new ReplaySubject<Record<'content', string>>(50);
+  private _messages$ = new ReplaySubject<Record<'content' | 'username', string>>(50);
 
-  constructor() { }
+  constructor(private userService : UserService) { }
 
-  public get messages(): Observable<Record<'content', string>> {
+  public get messages(): Observable<Record<'content' | 'username', string>> {
     return this._messages$;
   }
 
-  sendMessage(message: string) {
-    this._messages$.next({'content': message})
+  public sendMessage(message: string) {
+    if (this.userService.username) {
+      this._messages$.next({
+        'content': message,
+        'username': this.userService.username
+      })
+    }
   }
 }

@@ -13,5 +13,11 @@
     "chat": {
         "input-placeholder": "Schreibe eine Nachricht...",
         "input-button": "Senden"
+    },
+    "userprofile": {
+        "placeholder": "Dein Benutzername",
+        "save": "Speichern",
+        "username": "Benutzername",
+        "userprofile": "Benutzerprofil"
     }
 }
