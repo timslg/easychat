@@ -10,6 +10,8 @@
         </ng-template>
         <ng-template #sameNicknameBlock>
             <div [ngClass]="{'mt-1' : messages[i-1]}" class="block p-2 bg-white border border-gray-200 rounded-lg shadow">
+                <span class="text-hsg font-bold">{{message.username}}</span>
+                <br>
                 <span class="text-sm text-gray-900 whitespace-pre-wrap">{{ message.content }}</span>
             </div>
         </ng-template>

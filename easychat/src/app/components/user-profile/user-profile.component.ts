@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+
 
 @Component({
   selector: 'app-user-profile',
@@ -10,13 +12,15 @@ export class UserProfileComponent {
 
   public username : string = '';
 
-  constructor(public userService: UserService) {
-    
+  constructor(public userService: UserService, private router: Router) {
+
   }
 
   public onSubmit(username: string) : void {
     this.userService.setUsername(username);
     this.username = '';
+    this.router.navigate(['/chat']); 
+
   }
 
   public onKeyPress(event: KeyboardEvent) : void {

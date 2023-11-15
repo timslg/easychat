@@ -10,7 +10,9 @@ const routes: Routes = [
   { path: 'imprint', component: ImprintComponent },
   { path: 'qrcode', component: QrcodeComponent },
   { path: 'profile', component: UserProfileComponent },
-  { path: '', component: ChatComponent }
+  { path: 'chat', component: ChatComponent },
+  { path: '', redirectTo: '/profile', pathMatch: 'full' }
+
 ];
 
 @NgModule({
