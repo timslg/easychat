@@ -3,7 +3,7 @@
         <div class="w-full mx-auto max-w-screen-xl flex justify-between items-center p-4">
             <div class="flex-1 min-w-max flex justify-start">
                 <a class="" [routerLink]="['/']" class="">
-                    <img [src]="'header.hsg-logo' | transloco" class="h-[45px] m-[22.5px] hidden md:block" alt="University of St. Gallen Logo" />
+                    <img src="/assets/images/hsg_logo_full_de.svg" class="h-[45px] m-[22.5px] hidden md:block" alt="University of St. Gallen Logo" />
                     <img src="/assets/images/hsg_logo.svg" class="h-[45px] m-[22.5px] md:hidden" alt="University of St. Gallen Logo" />
                 </a>
             </div>
@@ -13,7 +13,12 @@
                 </a>
             </div>
             <div class="flex-1 min-w-max flex justify-end">
-                <app-language-selector/>
+                <a [routerLink]="['/profile']" class="text-hsg-700 hover:text-hsg-800 flex flex-row space-x-2">
+                    <span>{{userService.username}}</span>
+                    <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a8.949 8.949 0 0 0 4.951-1.488A3.987 3.987 0 0 0 11 14H9a3.987 3.987 0 0 0-3.951 3.512A8.948 8.948 0 0 0 10 19Zm3-11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                    </svg>
+                </a>
             </div>
         </div>
     </nav>      

@@ -6,13 +6,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
-import { TranslocoRootModule } from './transloco-root.module';
-import { LanguageSelectorComponent } from './components/language-selector/language-selector.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ImprintComponent } from './components/imprint/imprint.component';
-import { QrcodeComponent } from './components/qrcode/qrcode.component';
-import { WINDOW_PROVIDERS } from './window.providers';
-import { HostnameService } from './services/hostname.service';
 import { ChatInputComponent } from './components/chat-input/chat-input.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -25,9 +20,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    LanguageSelectorComponent,
     ImprintComponent,
-    QrcodeComponent,
     ChatInputComponent,
     ChatComponent,
     ChatMessageListComponent,
@@ -37,7 +30,6 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
   imports: [
     BrowserModule,
     HttpClientModule,
-    TranslocoRootModule,
     AppRoutingModule,
     QRCodeModule,
     ReactiveFormsModule,

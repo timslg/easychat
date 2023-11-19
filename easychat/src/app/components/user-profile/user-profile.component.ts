@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,13 +11,14 @@ export class UserProfileComponent {
 
   public username : string = '';
 
-  constructor(public userService: UserService) {
+  constructor(public userService: UserService, public router: Router) {
     
   }
 
   public onSubmit(username: string) : void {
     this.userService.setUsername(username);
     this.username = '';
+    this.router.navigate(['/'])
   }
 
   public onKeyPress(event: KeyboardEvent) : void {
