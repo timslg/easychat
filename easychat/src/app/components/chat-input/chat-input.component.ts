@@ -10,7 +10,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ChatInputComponent {
   messageForm = new FormGroup({
-    message: new FormControl('')
+    message: new FormControl(''),
+    timestamp: new Date()
   });
 
   constructor(private messageService: MessageService, public userService: UserService) {

@@ -4,6 +4,7 @@
             <span class="text-hsg font-bold">{{message.username}}</span>
             <br>
             <span class="text-sm text-gray-900 whitespace-pre-wrap">{{ message.content }}</span>
+            <span class="timestamp text-xs text-gray-500" style="position: absolute; bottom: 5px; right: 10px;">{{ message.timestamp | date: 'short' }}</span>
         </div>
     </ng-container>
 </div>
