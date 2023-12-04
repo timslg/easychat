@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ImprintComponent } from './components/imprint/imprint.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { userGuard } from './services/user.guard';
+import { userGuard } from './guards/user.guard';
 
 const routes: Routes = [
   { path: 'imprint', component: ImprintComponent },

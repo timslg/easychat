@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { QRCodeModule } from 'angularx-qrcode';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -14,6 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChatMessageListComponent } from './components/chat-message-list/chat-message-list.component';
 import { TextareaAutoresizeDirective } from './directives/textarea-autoresize.directive';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 @NgModule({
   declarations: [
@@ -31,9 +33,9 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    QRCodeModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    SocketIoModule.forRoot(config)
   ],
   providers: [ ],
   bootstrap: [AppComponent]
