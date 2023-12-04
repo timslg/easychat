@@ -40,8 +40,9 @@ app.get('/history', function (req, res, next) {
 });
 
 app.post('/history', function (req, res, next) {
-  const chatMessage = req.body?.message?.toString();
+  const chatMessage = req.body?.content?.toString();
   const username = req.body?.username?.toString();
+  const timestamp = req.body?.timestamp?.toString();
 
   if (!chatMessage) {
     res.status(400).send('Message is missing.');
@@ -54,14 +55,13 @@ app.post('/history', function (req, res, next) {
   }
 
   const date = new Date();
-  const message = {
-    id: message.length + 1,
-    message: chatMessage,
+  const message_object = {
+    content: chatMessage,
     username: username,
-    createdAt: date,
+    timestamp: timestamp
   };
 
-  message.push(message);
+  message.push(message_object);
 
   res.json(message);
 });

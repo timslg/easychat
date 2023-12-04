@@ -16,8 +16,9 @@ export class ChatMessageListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.messageService.messages.subscribe((message: Record<'content' | 'username', string>) => {
-      this.messages.push(message);
+    this.messageService.messages.subscribe((message: Record<'content' | 'username' | 'timestamp', string>[]) => {
+      console.log(message)
+      this.messages = message;
       this.ref.detectChanges();
       this.scrollToBottom();
     })

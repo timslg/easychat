@@ -13,14 +13,3 @@
 #scroll-container.bottom-overflowing {
     --bottom-mask-size: 4em !important;
 }
-
-.message-block {
-    position: relative;
-}
-.timestamp {
-    position: absolute;
-    bottom: 5px;
-    right: 10px;
-    font-size: 0.75rem; /* Adjust size as needed */
-    color: #6b7280; /* Adjust color as needed */
-}
