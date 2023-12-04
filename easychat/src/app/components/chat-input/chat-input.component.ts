@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 export class ChatInputComponent {
   messageForm = new FormGroup({
     message: new FormControl(''),
-    timestamp: new Date()
+    timestamp: new FormControl(new Date())
   });
 
   constructor(private messageService: MessageService, public userService: UserService) {
@@ -20,7 +20,7 @@ export class ChatInputComponent {
 
   public onSubmit() {
     const message = this.messageForm.controls.message.value;
-    
+
     if(message) {
       this.messageService.sendMessage(message);
       this.messageForm.reset();
