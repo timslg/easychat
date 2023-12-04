@@ -22,7 +22,7 @@ export class ChatInputComponent {
     const message = this.messageForm.controls.message.value;
 
     if(message) {
-      this.messageService.sendMessage(message);
+      this.messageService.sendMessage(message).subscribe;
       this.messageForm.reset();
     }
 

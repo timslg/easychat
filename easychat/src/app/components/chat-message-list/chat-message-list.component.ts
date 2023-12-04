@@ -1,3 +1,4 @@
+import { Message } from './../../models/message';
 import { AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
 import { MessageService } from 'src/app/services/message.service';
 
@@ -10,13 +11,13 @@ import { MessageService } from 'src/app/services/message.service';
 export class ChatMessageListComponent implements OnInit {
   @ViewChild('scrollContainer') private scrollContainer!: ElementRef;
 
-  public messages: Record<'content' | 'username' | 'timestamp', string>[] = [];
+  public messages: Message[] = [];
 
   constructor(private ref: ChangeDetectorRef, private messageService: MessageService) {
   }
 
   ngOnInit() {
-    this.messageService.messages.subscribe((message: Record<'content' | 'username' | 'timestamp', string>[]) => {
+    this.messageService.messages.subscribe((message: Message[]) => {
       console.log(message)
       this.messages = message;
       this.ref.detectChanges();
