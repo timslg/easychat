@@ -1,22 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Observable, ReplaySubject, Subject, from, map, of } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { UserService } from './user.service';
 import { HttpClient } from '@angular/common/http';
 import { Message } from '../models/message.model';
 import { Socket } from 'ngx-socket-io';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessageService {
 
-  // Temporary solution -> Only saves the last 50 messages
-  private _messages$ = new ReplaySubject<Record<'content' | 'username', string>>(50);
-
   constructor(private userService : UserService, private http: HttpClient, private socket: Socket) { }
 
   public get messages(): Observable<Message[]> {
-    return this.http.get<Message[]>('http://localhost:3000/messages').pipe(
+    return this.http.get<Message[]>(`${environment.apiUrl}/messages`).pipe(
       map((messages)=> messages.map((message) => {
         if(message.date) {
           message.date = new Date(message.date);
@@ -27,7 +25,7 @@ export class MessageService {
   }
 
   public sendMessage(content: string) {
-    return this.http.post('http://localhost:3000/messages', {
+    return this.http.post(`${environment.apiUrl}/messages`, {
       username: this.userService.username,
       content: content
     })

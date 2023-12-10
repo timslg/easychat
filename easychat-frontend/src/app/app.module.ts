@@ -15,7 +15,9 @@ import { ChatMessageListComponent } from './components/chat-message-list/chat-me
 import { TextareaAutoresizeDirective } from './directives/textarea-autoresize.directive';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
-const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
+import { environment } from 'src/environments/environment';
+
+const config: SocketIoConfig = { url: environment.socketUrl, options: {} };
 
 @NgModule({
   declarations: [

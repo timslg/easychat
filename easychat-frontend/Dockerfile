@@ -1,7 +1,7 @@
 # Build Stage
 FROM node:18.18.0 as node
 WORKDIR /app
-COPY easychat/. .
+COPY . .
 RUN npm install
 RUN npm run build --prod
 
