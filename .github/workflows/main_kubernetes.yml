@@ -22,4 +22,4 @@ jobs:
             file: ./easychat-frontend/Dockerfile
             builder: ${{ steps.buildx.outputs.name }}
             push: true
-            tags: '${{ secrets.REGISTRY_URL }}/easychat-frontend:latest'
+            tags: '${{ secrets.PRIVATE_REGISTRY_URL }}/easychat-frontend:latest'
