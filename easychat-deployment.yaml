@@ -1,0 +1,153 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: easychat-frontend-service
+  namespace: easychat
+  labels:
+    app: easychat-frontend
+spec:
+  selector:
+    app: easychat-frontend
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: easychat-frontend
+  namespace: easychat
+spec:
+  selector:
+    matchLabels:
+      app: easychat-frontend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: easychat-frontend
+    spec:
+      containers:
+      - name: easychat-frontend
+        image: registry.timschlegel.com/easychat-frontend
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+        - name: regcred
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: easychat-backend-service
+  namespace: easychat
+  labels:
+    app: easychat-backend
+spec:
+  selector:
+    app: easychat-backend
+  ports:
+  - port: 3000
+    protocol: TCP
+    targetPort: 3000
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: easychat-backend
+  namespace: easychat
+spec:
+  selector:
+    matchLabels:
+      app: easychat-backend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: easychat-backend
+    spec:
+      containers:
+      - name: easychat-backend
+        image: registry.timschlegel.com/easychat-backend
+        ports:
+        - containerPort: 3000
+      imagePullSecrets:
+        - name: regcred
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: easychat-ingressroute
+  namespace: easychat
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - kind: Rule
+    match: Host(`easychat.timschlegel.com`) && PathPrefix(`/`)
+    services:
+      - name: easychat-frontend-service
+        port: 80
+  - kind: Rule
+    match: Host(`easychat.timschlegel.com`) && (PathPrefix(`/api`) || PathPrefix(`/socket.io`))
+    services:
+      - name: easychat-backend-service
+        port: 3000
+    middlewares:
+      - name: api-stripprefix
+        namespace: easychat
+  tls:
+    secretName: easychat.timschlegel.com-tls
+    domains:
+    - main: easychat.timschlegel.com
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: easychat-ingressroute-redirect
+  namespace: easychat
+spec:
+  entryPoints:
+    - web
+  routes:
+  - kind: Rule
+    match: Host(`easychat.timschlegel.com`) && PathPrefix(`/`)
+    services:
+      - name: easychat-frontend-service
+        port: 80
+    middlewares:
+      - name: redirect-https
+        namespace: easychat
+  - kind: Rule
+    match: Host(`easychat.timschlegel.com`) && (PathPrefix(`/api`) || PathPrefix(`/socket.io`))
+    services:
+      - name: easychat-backend-service
+        port: 3000
+    middlewares:
+      - name: api-stripprefix
+        namespace: easychat
+      - name: redirect-https
+        namespace: easychat
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: api-stripprefix
+  namespace: easychat
+spec:
+  stripPrefix:
+    prefixes:
+      - /api
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: redirect-https
+  namespace: easychat
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
+    port: "443"
