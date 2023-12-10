@@ -52,9 +52,6 @@ jobs:
       steps:
       - name: 'Checkout GitHub Action'
         uses: actions/checkout@v4
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
       - name: Apply to Kubernetes-Cluster
         uses: actions-hub/kubectl@master
         env:
