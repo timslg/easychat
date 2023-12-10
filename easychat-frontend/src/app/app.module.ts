@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
@@ -17,6 +17,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 
 import { environment } from 'src/environments/environment';
 import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 const config: SocketIoConfig = { url: environment.socketUrl, options: {} };
 
@@ -39,7 +40,13 @@ const config: SocketIoConfig = { url: environment.socketUrl, options: {} };
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [ ],
   bootstrap: [AppComponent]
