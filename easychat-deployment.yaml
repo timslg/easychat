@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
       - name: easychat-frontend
-        image: registry.timschlegel.com/easychat-frontend
+        image: registry.timschlegel.com/easychat-frontend:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 80
@@ -71,7 +71,7 @@ spec:
     spec:
       containers:
       - name: easychat-backend
-        image: registry.timschlegel.com/easychat-backend
+        image: registry.timschlegel.com/easychat-backend:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
