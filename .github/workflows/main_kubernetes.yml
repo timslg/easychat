@@ -57,4 +57,4 @@ jobs:
         env:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
         with:
-          args: kubectl apply -f $GITHUB_WORKSPACE/easychat-deployment.yml
+          args: apply -f $GITHUB_WORKSPACE/easychat-deployment.yml
