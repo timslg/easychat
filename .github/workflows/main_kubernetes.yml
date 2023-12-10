@@ -14,7 +14,7 @@ jobs:
           with:
             registry: ${{ secrets.PRIVATE_REGISTRY_URL }}
             username: ${{ secrets.PRIVATE_REGISTRY_USER }}
-            password: ${{ secrets.PRIVATE_REGISTRY_PASSWORD }}
+            password: ${{ secrets.PRIVATE_REGISTRY_PASS }}
         - name: Build and push
           uses: docker/build-push-action@v2
           with:
