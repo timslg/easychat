@@ -16,6 +16,7 @@ import { TextareaAutoresizeDirective } from './directives/textarea-autoresize.di
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 import { environment } from 'src/environments/environment';
+import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
 
 const config: SocketIoConfig = { url: environment.socketUrl, options: {} };
 
@@ -29,7 +30,8 @@ const config: SocketIoConfig = { url: environment.socketUrl, options: {} };
     ChatComponent,
     ChatMessageListComponent,
     TextareaAutoresizeDirective,
-    UserProfileComponent
+    UserProfileComponent,
+    LeaderboardComponent
   ],
   imports: [
     BrowserModule,

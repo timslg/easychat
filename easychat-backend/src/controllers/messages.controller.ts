@@ -1,6 +1,7 @@
 import { NextFunction, Request, RequestHandler, Response } from "express";
 import { Message } from "../models/message.model";
 import Websocket from "../websocket/websocket";
+import { increaseCounter } from "./users.controller";
 
 const messages: Message[] = [];
 
@@ -14,6 +15,7 @@ export const addMessage: RequestHandler = (req: Request, res: Response, next: Ne
     }
     messages.push(message);
     io.emit('message', message);
+    increaseCounter(req.body.username);
     res.json(message);
 }
 

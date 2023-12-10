@@ -1,5 +1,6 @@
 import express, { Express, Request, Response } from 'express';
-import messageRouter from './routes/messages.route';
+import messagesRouter from './routes/messages.route';
+import usersRouter from './routes/users.route';
 import Websocket from './websocket/websocket';
 
 var cors = require('cors');
@@ -18,7 +19,9 @@ app.get('/', (req: Request, res: Response) => {
   res.send('Express + TypeScript Server');
 });
 
-app.use('/messages', messageRouter)
+app.use('/messages', messagesRouter);
+
+app.use('/users', usersRouter);
 
 http.listen(3000, () => {
   console.log('listening on *:3000');
