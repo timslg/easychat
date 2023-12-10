@@ -51,7 +51,7 @@ jobs:
       - build-frontend
       steps:
       - name: 'Checkout GitHub Action'
-        uses: actions/checkout@main
+        uses: actions/checkout@v2
       - name: Apply to Kubernetes-Cluster
         uses: actions-hub/kubectl@master
         env:
