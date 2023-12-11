@@ -83,17 +83,19 @@ kind: IngressRoute
 metadata:
   name: easychat-ingressroute
   namespace: easychat
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   entryPoints:
     - websecure
   routes:
   - kind: Rule
-    match: Host(`easychat.timschlegel.com`) && PathPrefix(`/`)
+    match: Host(`easychat.chatnroll.org`) && PathPrefix(`/`)
     services:
       - name: easychat-frontend-service
         port: 80
   - kind: Rule
-    match: Host(`easychat.timschlegel.com`) && (PathPrefix(`/api`) || PathPrefix(`/socket.io`))
+    match: Host(`easychat.chatnroll.org`) && (PathPrefix(`/api`) || PathPrefix(`/socket.io`))
     services:
       - name: easychat-backend-service
         port: 3000
@@ -101,9 +103,9 @@ spec:
       - name: api-stripprefix
         namespace: easychat
   tls:
-    secretName: easychat.timschlegel.com-tls
+    secretName: easychat.chatnroll.org-tls
     domains:
-    - main: easychat.timschlegel.com
+    - main: easychat.chatnroll.org
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
@@ -115,7 +117,7 @@ spec:
     - web
   routes:
   - kind: Rule
-    match: Host(`easychat.timschlegel.com`) && PathPrefix(`/`)
+    match: Host(`easychat.chatnroll.org`) && PathPrefix(`/`)
     services:
       - name: easychat-frontend-service
         port: 80
@@ -123,7 +125,7 @@ spec:
       - name: redirect-https
         namespace: easychat
   - kind: Rule
-    match: Host(`easychat.timschlegel.com`) && (PathPrefix(`/api`) || PathPrefix(`/socket.io`))
+    match: Host(`easychat.chatnroll.org`) && (PathPrefix(`/api`) || PathPrefix(`/socket.io`))
     services:
       - name: easychat-backend-service
         port: 3000
@@ -153,3 +155,17 @@ spec:
     scheme: https
     permanent: true
     port: "443"
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: easychat.chatnroll.org
+  namespace: easychat
+spec:
+  secretName: easychat.chatnroll.org-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: easychat.chatnroll.org
+  dnsNames:
+  - easychat.chatnroll.org
