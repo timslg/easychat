@@ -18,6 +18,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { environment } from 'src/environments/environment';
 import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { AlertComponent } from './components/alert/alert.component';
 
 const config: SocketIoConfig = { url: environment.socketUrl, options: {} };
 
@@ -32,7 +33,8 @@ const config: SocketIoConfig = { url: environment.socketUrl, options: {} };
     ChatMessageListComponent,
     TextareaAutoresizeDirective,
     UserProfileComponent,
-    LeaderboardComponent
+    LeaderboardComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,7 @@ export class ChatMessageListComponent implements OnInit {
 
   public messages: Message[] = [];
 
-  constructor(private ref: ChangeDetectorRef, private messageService: MessageService) {
+  constructor(private ref: ChangeDetectorRef, public messageService: MessageService) {
   }
 
   ngOnInit() {
