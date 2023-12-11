@@ -52,7 +52,9 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "src/assets/js/pwa.js"
+            ],
             "allowedCommonJsDependencies": [
               "qrcode"
           ],
