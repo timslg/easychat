@@ -49,7 +49,7 @@ export class MessageService {
         this.alertService.error('Das Backend konnte nicht erreicht werden.', true);
         return throwError(() => err);
       })
-    )
+    );
   }
 
   public get liveMessages() {

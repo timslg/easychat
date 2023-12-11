@@ -1,37 +1,38 @@
-<h1 class="text-4xl font-bold mb-3">Leaderboard</h1>
-
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-                <th scope="col" class="px-6 py-3 w-10 text-center">
-                    Position
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    User
-                </th>
-                <th scope="col" class="px-6 py-3 w-10 text-right">
-                    Score
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <ng-container *ngFor="let user of users; let i = index">
-                <tr class="odd:bg-white even:bg-gray-50 border-b">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center flex items-center flex-col">
-                        <img *ngIf="i == 0" src="/assets/icons/medal_1.png" class="h-8"/>
-                        <img *ngIf="i == 1" src="/assets/icons/medal_2.png" class="h-8"/>
-                        <img *ngIf="i == 2" src="/assets/icons/medal_3.png" class="h-8"/>
-                        <span *ngIf="i > 2">{{ i+1 }}</span>
+<div class="h-full w-full flex flex-col">
+    <h1 class="text-4xl font-bold mb-3">Leaderboard</h1>
+    <div class="relative overflow-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                <tr>
+                    <th scope="col" class="px-6 py-3 w-10 text-center">
+                        Position
                     </th>
-                    <td class="px-6 py-4">
-                        {{ user[0] }}
-                    </td>
-                    <td class="px-6 py-4 text-right">
-                        {{ user[1] }}
-                    </td>
+                    <th scope="col" class="px-6 py-3">
+                        User
+                    </th>
+                    <th scope="col" class="px-6 py-3 w-10 text-right">
+                        Score
+                    </th>
                 </tr>
-            </ng-container>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let user of users; let i = index">
+                    <tr class="odd:bg-white even:bg-gray-50 border-b">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center flex items-center flex-col">
+                            <img *ngIf="i == 0" src="/assets/icons/medal_1.png" class="h-8"/>
+                            <img *ngIf="i == 1" src="/assets/icons/medal_2.png" class="h-8"/>
+                            <img *ngIf="i == 2" src="/assets/icons/medal_3.png" class="h-8"/>
+                            <span *ngIf="i > 2">{{ i+1 }}</span>
+                        </th>
+                        <td class="px-6 py-4">
+                            {{ user[0] }}
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            {{ user[1] }}
+                        </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
 </div>
