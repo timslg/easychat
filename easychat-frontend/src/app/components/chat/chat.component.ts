@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { ChatInputComponent } from '../chat-input/chat-input.component';
 import { MessageService } from 'src/app/services/message.service';
 
+/**
+ * Component responsible for rendering the chat interface.
+ */
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -10,6 +11,12 @@ import { MessageService } from 'src/app/services/message.service';
 })
 export class ChatComponent {
 
-  constructor (public messageService: MessageService) {}
+  /**
+   * Constructor for ChatComponent.
+   * @param messageService - The service for managing messages.
+   */
+  constructor(
+    public messageService: MessageService
+  ) {}
 
 }

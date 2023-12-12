@@ -1,5 +1,5 @@
 export interface Message {
-    username: string,
-    content: string,
-    date: Date,
+    username: string;
+    content: string;
+    date: Date;
 }

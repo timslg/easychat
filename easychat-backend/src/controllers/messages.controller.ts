@@ -5,6 +5,9 @@ import { increaseCounter } from "./users.controller";
 
 const messages: Message[] = [];
 
+/**
+ * Handles adding a new message.
+ */
 export const addMessage: RequestHandler = (req: Request, res: Response, next: NextFunction) => {
     const io = Websocket.getInstance();
 
@@ -12,13 +15,17 @@ export const addMessage: RequestHandler = (req: Request, res: Response, next: Ne
         username: req.body.username,
         content: req.body.content,
         date: new Date(),
-    }
+    };
+
     messages.push(message);
     io.emit('message', message);
     increaseCounter(req.body.username);
     res.json(message);
 }
 
+/**
+ * Handles getting all messages.
+ */
 export const getMessages: RequestHandler = (req: Request, res: Response, next: NextFunction) => {
     res.json(messages);
 }

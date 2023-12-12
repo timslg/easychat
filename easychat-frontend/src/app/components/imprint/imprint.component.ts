@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { AlertService } from 'src/app/services/alert.service';
 
+/**
+ * This component renders the imprint.
+ */
 @Component({
   selector: 'app-imprint',
   templateUrl: './imprint.component.html',

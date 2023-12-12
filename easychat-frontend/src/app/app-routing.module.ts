@@ -14,6 +14,13 @@ const routes: Routes = [
   { path: '**', component: ChatComponent, canActivate: [userGuard] }
 ];
 
+/**
+ * This module is used for the routing.
+ * The content space is populated based on the router output.
+ * The default route is the chat.
+ * To access the leaderboard or the chat the user needs to set its username.
+ * This is enforced with the userGuard.
+ */
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

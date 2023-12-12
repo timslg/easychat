@@ -1,22 +1,43 @@
 import { Injectable } from '@angular/core';
 
+/**
+ * Service for managing data in the local storage.
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class LocalStorageService {
 
-  constructor() { }
-
-  public saveData(key: string, value: string) {
+  /**
+   * Saves data in the local storage.
+   * @param key - The key under which the data will be stored.
+   * @param value - The data to be stored.
+   */
+  public saveData(key: string, value: string): void {
     localStorage.setItem(key, value);
   }
-  public getData(key: string) {
+
+  /**
+   * Retrieves data from the local storage.
+   * @param key - The key for which data needs to be retrieved.
+   * @returns The data stored under the specified key.
+   */
+  public getData(key: string): string | null {
     return localStorage.getItem(key)
   }
-  public removeData(key: string) {
+
+  /**
+   * Removes data from the local storage.
+   * @param key - The key for which data needs to be removed.
+   */
+  public removeData(key: string): void {
     localStorage.removeItem(key);
   }
-  public clearData() {
+
+  /**
+   * Clears all data from the local storage.
+   */
+  public clearData(): void {
     localStorage.clear();
   }
   
