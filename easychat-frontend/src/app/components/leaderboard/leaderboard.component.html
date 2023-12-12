@@ -37,14 +37,16 @@
     </div>
     <div class="block p-4 bg-white border border-gray-200 rounded-lg shadow mt-4">
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Spenden an die Turtle-Foundation</h5>
-        <p class="font-normal text-gray-500 mb-2">Für jede mit EasyChat versendete Nachricht wird 1 Rappen an die Turtle-Foundation gespendet.</p>
-        <a href="https://www.turtle-foundation.org/" class="inline-flex items-center text-blue-600 hover:underline mb-4">
-            Turtle-Foundation
-            <svg class="w-3 h-3 ms-2.5 rtl:rotate-[270deg]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11v4.833A1.166 1.166 0 0 1 13.833 17H2.167A1.167 1.167 0 0 1 1 15.833V4.167A1.166 1.166 0 0 1 2.167 3h4.618m4.447-2H17v5.768M9.111 8.889l7.778-7.778"/>
-            </svg>
-        </a>
-        <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900">Spendenziel</h5>
+        <div class="hidden sm:block">
+            <p class="font-normal text-gray-500 mb-2">Für jede mit EasyChat versendete Nachricht wird 1 Rappen an die Turtle-Foundation gespendet.</p>
+            <a href="https://www.turtle-foundation.org/" class="inline-flex items-center text-blue-600 hover:underline mb-4">
+                Turtle-Foundation
+                <svg class="w-3 h-3 ms-2.5 rtl:rotate-[270deg]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11v4.833A1.166 1.166 0 0 1 13.833 17H2.167A1.167 1.167 0 0 1 1 15.833V4.167A1.166 1.166 0 0 1 2.167 3h4.618m4.447-2H17v5.768M9.111 8.889l7.778-7.778"/>
+                </svg>
+            </a>
+            <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900">Spendenziel</h5>
+        </div>
         <p class="font-normal text-gray-500 mb-2">{{(totalMessageCount/100).toFixed(2)}} CHF / {{(10.0).toFixed(2)}} CHF</p>
         <div class="w-full bg-gray-200 rounded-full h-2.5">
             <div class="bg-blue-600 h-2.5 rounded-full" [style.width.%]="totalMessageCount/10"></div>
