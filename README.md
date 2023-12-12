@@ -8,7 +8,7 @@ This is a simple chat application built with Angular, Express, and Socket.io.
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Production Usage](#productionusage)
+- [Production Usage](#production-usage)
 
 ## Features
 
