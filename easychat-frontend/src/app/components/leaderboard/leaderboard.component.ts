@@ -59,7 +59,6 @@ export class LeaderboardComponent implements OnInit, OnDestroy {
     this.users.forEach((value) => {
       sum += value[1];
     });
-    console.log(sum)
     return sum;
   }
 
