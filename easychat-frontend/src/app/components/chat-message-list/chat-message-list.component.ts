@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Message } from 'src/app/models/message.model';
 import { MessageService } from 'src/app/services/message.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-chat-message-list',
@@ -13,7 +14,7 @@ export class ChatMessageListComponent implements OnInit {
 
   public messages: Message[] = [];
 
-  constructor(private ref: ChangeDetectorRef, public messageService: MessageService) {
+  constructor(private ref: ChangeDetectorRef, public messageService: MessageService, public userService: UserService) {
   }
 
   ngOnInit() {

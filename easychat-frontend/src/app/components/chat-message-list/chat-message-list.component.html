@@ -6,8 +6,8 @@
             <div *ngIf="messages[i-1]?.date?.getDate() != message.date?.getDate()" [ngClass]="{'mt-4' : messages[i-1]}" class="px-2 bg-hsg rounded-lg shadow w-fit self-center">
                 <span class="text-sm text-white">{{ message.date | date:'d. MMM yyyy' }}</span>
             </div>
-            <div class="block p-2 bg-white border border-gray-200 rounded-lg shadow mt-2">
-                <div class="relative pr-8">
+            <div class="block p-2 bg-white border border-gray-200 rounded-lg shadow mt-2 w-fit" [class.self-end]="message.username == userService.username">
+                <div class="relative pr-10">
                     <span class="text-hsg font-bold">{{message.username}}</span>
                     <br>
                     <span class="text-sm text-gray-900 whitespace-pre-wrap break-all">{{ message.content }}</span>
@@ -19,8 +19,8 @@
             <div *ngIf="messages[i-1]?.date?.getDate() != message.date?.getDate()" class="px-2 bg-hsg rounded-lg shadow w-fit self-center">
                 <span class="text-sm text-white">{{ message.date | date:'d. MMM yyyy' }}</span>
             </div>
-            <div class="block p-2 bg-white border border-gray-200 rounded-lg shadow">
-                <div class="relative pr-8">
+            <div class="block p-2 bg-white border border-gray-200 rounded-lg shadow w-fit" [class.self-end]="message.username == userService.username">
+                <div class="relative pr-10">
                     <span class="text-sm text-gray-900 whitespace-pre-wrap break-all">{{ message.content }}</span>
                     <span class="text-xs text-gray-400 absolute right-0 bottom-0">{{ message.date | date:'H:mm' }}</span>
                 </div>

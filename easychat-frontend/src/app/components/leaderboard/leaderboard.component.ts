@@ -25,4 +25,13 @@ export class LeaderboardComponent implements OnInit {
     });
   }
 
+  get totalMessageCount() {
+    let sum = 0;
+    this.users.forEach((value) => {
+      sum += value[1];
+    });
+    console.log(sum)
+    return sum;
+  }
+
 }
