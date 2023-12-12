@@ -9,11 +9,14 @@ This is a simple chat application built with Angular, Express, and Socket.io.
 - [Installation](#installation)
 - [Usage](#usage)
 - [Production Usage](#production-usage)
+- [PWA Support](#pwa-support)
 
 ## Features
 
 - Real-time chat with Socket.io
 - User leaderboard with message count
+- PWA support
+- Donation feature
 
 ## Prerequisites
 
@@ -56,3 +59,6 @@ Before you begin, ensure you have met the following requirements:
 
 ## Production Usage
 - After the deployment, the app is also available at: https://easychat.chatnroll.org
+
+## PWA Support
+- The application can be installed as a PWA on your device.
