@@ -90,12 +90,12 @@ spec:
     - websecure
   routes:
   - kind: Rule
-    match: Host(`easychat.chatnroll.org`) && PathPrefix(`/`)
+    match: Host(`easychat.timschlegel.com`) && PathPrefix(`/`)
     services:
       - name: easychat-frontend-service
         port: 80
   - kind: Rule
-    match: Host(`easychat.chatnroll.org`) && (PathPrefix(`/api`) || PathPrefix(`/socket.io`))
+    match: Host(`easychat.timschlegel.com`) && (PathPrefix(`/api`) || PathPrefix(`/socket.io`))
     services:
       - name: easychat-backend-service
         port: 3000
@@ -103,9 +103,9 @@ spec:
       - name: api-stripprefix
         namespace: easychat
   tls:
-    secretName: easychat.chatnroll.org-tls
+    secretName: easychat.timschlegel.com-tls
     domains:
-    - main: easychat.chatnroll.org
+    - main: easychat.timschlegel.com
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
@@ -117,7 +117,7 @@ spec:
     - web
   routes:
   - kind: Rule
-    match: Host(`easychat.chatnroll.org`) && PathPrefix(`/`)
+    match: Host(`easychat.timschlegel.com`) && PathPrefix(`/`)
     services:
       - name: easychat-frontend-service
         port: 80
@@ -125,7 +125,7 @@ spec:
       - name: redirect-https
         namespace: easychat
   - kind: Rule
-    match: Host(`easychat.chatnroll.org`) && (PathPrefix(`/api`) || PathPrefix(`/socket.io`))
+    match: Host(`easychat.timschlegel.com`) && (PathPrefix(`/api`) || PathPrefix(`/socket.io`))
     services:
       - name: easychat-backend-service
         port: 3000
@@ -159,13 +159,13 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: easychat.chatnroll.org
+  name: easychat.timschlegel.com
   namespace: easychat
 spec:
-  secretName: easychat.chatnroll.org-tls
+  secretName: easychat.timschlegel.com-tls
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
-  commonName: easychat.chatnroll.org
+  commonName: easychat.timschlegel.com
   dnsNames:
-  - easychat.chatnroll.org
+  - easychat.timschlegel.com
